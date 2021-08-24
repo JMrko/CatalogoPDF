@@ -1,23 +1,20 @@
 <div class="body1_page3"></div>
-<div class="box2_page" id="color_page3">•  Creciendo Juntos</div>
+<div class="circle_page3">•</div>
+<div class="box2_page" id="color_page3">Creciendo Juntos</div>
 <div class="box2_page3">Actualización 5 de Agosto del 2021</div>
 <div class="box4_page" id="color_page3">Infant</div>
 <div class="box4_page3">
     <table >
-        @foreach ( range (0,4) as $valve) 
+        @foreach ( range (0,2) as $valve) 
             @if ($loop->index %2==0)
                 <tr class="fila">
             @endif
-                    <th class="columna" 
-                        @if($loop->last && ($loop->index +1) % 2 != 0)
-                        colspan='2'
-                        @endif
-                    >
-                        <div class="box_table @if($loop->last && ($loop->index +1) % 2 != 0) last_box @endif"
+                    <th class="columna">
+                            <div class="box_table"
                             id="box_table_color_page3">
                             <div class="big_text">
-                                <div class="text1">50 Combos </div> 
-                                <div class="text2">Total de planchas: 300</div> 
+                                <div class="text1" id="text1_color_page3">50 Combos </div> 
+                                <div class="text2" id="text2_color_page3">Total de planchas: 300</div> 
                                 <div class="text3">Sell In Bonificación</div>
                             </div>
                             <div class="box_table_img">

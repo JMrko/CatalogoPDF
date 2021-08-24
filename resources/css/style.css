@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-/* @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/fonts/Roboto-Black.ttf') format('ttf');
-    font-style: normal;
-    font-weight: 900;
-} */
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/Segoe_UI_Bold.ttf') format("truetype");
+}
 body, html{
     height: 100%;
     margin: 0;
@@ -92,6 +90,7 @@ body, html{
     top: 250px;
     padding: 0%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI'; */
     font-style: normal;
     font-weight: bold;
     font-size: 59px;
@@ -150,7 +149,7 @@ body, html{
     position: absolute;
     width: 193px;
     height: 19px;
-    left: 47px;
+    left: 35px;
     top: 65px;
     font-family: 'Roboto', sans-serif;
     /* font-style: normal;*/
@@ -198,13 +197,30 @@ body, html{
 .text1{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    /* font-weight: 900; */
+    /* font-weight: 500; */
     font-size: 13px;
     line-height: 15px;
     display: flex;
     align-items: center;
     text-align: center;
+}
+#text1_color_page3{
     color: #E41A37;
+}
+#text1_color_page5{
+    color: #B21B86;
+}
+#text1_color_page7{
+    color: #91C559;
+}
+#text1_color_page9{
+    color: #876796;
+}
+#text1_color_page11{
+    color: #0C3562;
+}
+#text1_color_page13{
+    color: #378AC0;
 }
 .text2{
     font-family: 'Roboto', sans-serif;
@@ -215,8 +231,24 @@ body, html{
     display: flex;
     align-items: center;
     text-align: center;
-
+}
+#text2_color_page3{
     color: rgba(228, 26, 55, 0.7);
+}
+#text2_color_page5{
+    color: rgba(178, 27, 134, 0.7);
+}
+#text2_color_page7{
+    color: rgba(145, 197, 89, 0.7);
+}
+#text2_color_page9{
+    color: rgba(135, 103, 150, 0.7);
+}
+#text2_color_page11{
+    color: rgba(12, 53, 98, 0.7);
+}
+#text2_color_page13{
+    color: rgba(55, 138, 192, 0.7);
 }
 .text3{
     font-family: 'Roboto', sans-serif;
@@ -235,7 +267,7 @@ body, html{
 }
 .img_products{
     position: relative;
-    padding-top: 30px;
+    padding-top: 12px;
     height: 120px;
     /* border: 1px solid #E41A37; */
     width: 170px;
@@ -243,7 +275,7 @@ body, html{
 }
 .img_product{
     position: relative;
-    width: 60%;
+    width: 75%;
 }
 .text1_product1{
     position: relative;
@@ -379,4 +411,58 @@ body, html{
 }
 #box_table_color_page13{
     border: 1px solid #378AC0;
+}
+.circle_page3{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #E41A37;
+    font-size: 30px;
+}
+.circle_page5{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #B21B86;
+    font-size: 30px;
+}
+.circle_page7{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #91C559;
+    font-size: 30px;
+}
+.circle_page9{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #876796;
+    font-size: 30px;
+}
+.circle_page11{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #0C3562;
+    font-size: 30px;
+}
+.circle_page13{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 33px;
+    top: 35px;
+    color: #378AC0;
+    font-size: 30px;
 }

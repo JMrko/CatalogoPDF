@@ -1,9 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap'); */
 @font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Black.ttf') format('ttf');
+    font-family: 'Segoe UI Bold';
+    src: url('../fonts/Segoe_UI_Bold.ttf');
     font-style: normal;
-    font-weight: 900;
 }
 body, html{
     height: 100%;
@@ -91,14 +90,14 @@ body, html{
     left: 115px;
     top: 250px;
     padding: 0%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI Bold';
     font-style: normal;
-    font-weight: bold;
+    font-weight: 900;
     font-size: 59px;
     line-height: 104.06%;
     /* or 61px */
     text-align: center;
-    color: #FFFFFF;
+    color: black;
 }
 .box2_page1{
     position: absolute;
@@ -153,8 +152,8 @@ body, html{
     left: 47px;
     top: 65px;
     font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 900;
+    /* font-style: normal;*/
+    /* font-weight: 900;  */
     font-size: 10px;
     line-height: 12px;
     /* display: flex; */
@@ -181,7 +180,7 @@ body, html{
     border-radius: 20px;
 }
 .last_box{
-    width: 50%;
+    width: 45%;
     margin: 0 auto;
 }
 #box_table_color_page3{
@@ -235,7 +234,7 @@ body, html{
 }
 .img_products{
     position: relative;
-    padding-top: 30px;
+    padding-top: 12px;
     height: 120px;
     /* border: 1px solid #E41A37; */
     width: 170px;
@@ -243,11 +242,11 @@ body, html{
 }
 .img_product{
     position: relative;
-    width: 60%;
+    width: 75%;
 }
 .text1_product1{
     position: relative;
-    top: 10px;
+    /* top: 10px; */
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     /* font-weight: 900; */
@@ -260,7 +259,7 @@ body, html{
 }
 .text2_product1{
     position: relative;
-    top: 10px;
+    /* top: 10px; */
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
