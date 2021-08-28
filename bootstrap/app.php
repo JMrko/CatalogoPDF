@@ -25,7 +25,7 @@ $app = new Laravel\Lumen\Application(
 
  $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +59,10 @@ $app->singleton(
 |
 */
 
-// $app->configure('app');
+$app->configure('app');
+$app->configure('services');
 $app->configure('dompdf');
+$app->configure('mail');
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +98,8 @@ $app->configure('dompdf');
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Barryvdh\DomPDF\ServiceProvider::class);
-
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

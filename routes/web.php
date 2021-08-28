@@ -17,11 +17,22 @@
 //     return $router->app->version();
 // });
 
-$router->get('/',function(){
-    $pdf = app('dompdf.wrapper');
-    $pdf->setPaper('A4', 'portrait');
-    // $pdf->setOptions('isRemoteEnabled',true);
-    $pdf->loadView('welcome');
-    return $pdf->stream();
-    // return view('welcome');
-});
+// $router->get('/catalogo1',function(){
+//     $pdf = app('dompdf.wrapper');
+//     $pdf->setPaper('A4', 'portrait');
+//     // $pdf->setOptions('isRemoteEnabled',true);
+//     $pdf->loadView('catalogo1.welcome');
+//     return $pdf->stream();
+//     // return view('catalogo1.welcome');
+// });
+// $router->get('/catalogo2',function(){
+//     $pdf = app('dompdf.wrapper');
+//     $pdf->setPaper('A4', 'portrait');
+//     // $pdf->setOptions('isRemoteEnabled',true);
+//     $pdf->loadView('catalogo2.welcome');
+//     return $pdf->stream();
+//     // return view('catalogo2.welcome');
+// });
+$router->get('/','PdfController@catalogo1');
+$router->get('/catalogo2','PdfController@catalogo2');
+$router->get('/send_email','MailController@mail');

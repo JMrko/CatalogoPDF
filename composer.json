@@ -6,7 +6,10 @@
     "type": "project",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-gd": "*",
         "barryvdh/laravel-dompdf": "^0.9.0",
+        "flipbox/lumen-generator": "^8.2",
+        "illuminate/mail": "^8.56",
         "laravel/lumen-framework": "^8.0"
     },
     "require-dev": {
