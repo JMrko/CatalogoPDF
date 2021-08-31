@@ -45,15 +45,15 @@ class PdfController extends Controller
         $pdf = App::make('dompdf.wrapper');
         // $pdf->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         // $pdf->setOptions(['isRemoteEnabled' => true]);
-        $pdf->getDomPDF()->setHttpContext(
-            stream_context_create([
-                'ssl' => [
-                    'allow_self_signed'=> TRUE,
-                    'verify_peer' => FALSE,
-                    'verify_peer_name' => FALSE,
-                ]
-            ])
-        );
+        // $pdf->getDomPDF()->setHttpContext(
+        //     stream_context_create([
+        //         'ssl' => [
+        //             'allow_self_signed'=> TRUE,
+        //             'verify_peer' => FALSE,
+        //             'verify_peer_name' => FALSE,
+        //         ]
+        //     ])
+        // );
         
         $pdf->setPaper('A4', 'portrait');
         $pdf->loadView('catalogo2.welcome', $data);

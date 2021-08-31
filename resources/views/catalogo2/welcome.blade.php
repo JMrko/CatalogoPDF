@@ -10,19 +10,18 @@
     <link rel="stylesheet" href="../resources/css/style2.css">
 </head>
 <body>
-    @include('catalogo2.page1')
-    @include('catalogo2.page2')
-    @include('catalogo2.page3')
-    @include('catalogo2.page3-2')
-    @include('catalogo2.page4')
-    @include('catalogo2.page5')
-    @include('catalogo2.page6')
-    @include('catalogo2.page7')
-    @include('catalogo2.page8')
-    @include('catalogo2.page9')
-    @include('catalogo2.page10')
-    @include('catalogo2.page11')
-    @include('catalogo2.page12')
-    @include('catalogo2.page13')
+    {{-- @include('catalogo2.page1_cat2')
+    @include('catalogo2.page2_cat2')
+    @include('catalogo2.page3_cat2')
+    @include('catalogo2.page4_cat2') --}}
+    @include('catalogo2.page5_cat2')
+    {{-- @include('catalogo2.page6_cat2')
+    @include('catalogo2.page7_cat2')
+    @include('catalogo2.page8_cat2')
+    @include('catalogo2.page9_cat2')
+    @include('catalogo2.page10_cat2')
+    @include('catalogo2.page11_cat2')
+    @include('catalogo2.page12_cat2')
+    @include('catalogo2.page13_cat2') --}}
 </body>
 </html>

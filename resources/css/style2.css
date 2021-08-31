@@ -487,7 +487,24 @@ body, html{
     text-align: center;
     color: #FFFFFF;
     left: 108px;
-    padding-top: 1px;
+    /* background-color: #E41A37; */
+    /* padding-top: 1px; */
+}
+.box7_page{
+    position: relative; 
+    width: 121px; 
+    height: 23.23px;
+    border-radius: 11px; 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 20px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    left: 130px;
+    /* background-color: #E41A37; */
 }
 .color3-1{
     background-color: #E41A37;
@@ -525,18 +542,4 @@ body, html{
 .color13-2{
     background-color: #378AC0;
 }
-.box7_page{
-    position: relative; 
-    width: 121px; 
-    height: 23.23px;
-    border-radius: 11px; 
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 20px;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    left: 130px
-}
+
