@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\CatalogoPromociones;
 use App\Mail\StatusSubsidios;
+use App\Mail\UltimaActualizacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,5 +17,9 @@ class MailController extends Controller
     public function email_subsidio(){
         // $data = ['nombre'=>'marco'];
         Mail::to('marco.02.06@hotmail.com')->send(new StatusSubsidios());
+    }
+    public function actualizacion(){
+        // $data = ['nombre'=>'marco'];
+        Mail::to('marco.02.06@hotmail.com')->send(new UltimaActualizacion());
     }
 }
