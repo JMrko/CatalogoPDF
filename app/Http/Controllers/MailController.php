@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\CatalogoPromociones;
+use App\Mail\StatusEntregables;
 use App\Mail\StatusSubsidios;
 use App\Mail\UltimaActualizacion;
 use Illuminate\Http\Request;
@@ -21,5 +22,9 @@ class MailController extends Controller
     public function actualizacion(){
         // $data = ['nombre'=>'marco'];
         Mail::to('marco.02.06@hotmail.com')->send(new UltimaActualizacion());
+    }
+    public function status(){
+        // $data = ['nombre'=>'marco'];
+        Mail::to('marco.02.06@hotmail.com')->send(new StatusEntregables());
     }
 }

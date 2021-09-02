@@ -39,7 +39,8 @@ $router->get('/catalogo2','PdfController@catalogo2');
 $router->get('/send_email','MailController@mail');
 $router->get('/send_email/subsidio','MailController@email_subsidio');
 $router->get('/send_email/actualizacion','MailController@actualizacion');
+$router->get('/send_email/status','MailController@status');
 
 $router->get('/test', function(){
-        return view('mail.actualizacion');
+        return view('mail.status');
 });
