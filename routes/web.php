@@ -35,4 +35,10 @@
 // });
 $router->get('/','PdfController@catalogo1');
 $router->get('/catalogo2','PdfController@catalogo2');
+
 $router->get('/send_email','MailController@mail');
+$router->get('/send_email/subsidio','MailController@email_subsidio');
+
+$router->get('/test', function(){
+        return view('mail.subsidio');
+});
