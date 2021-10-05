@@ -45,3 +45,5 @@ $router->get('/send_email/status','MailController@status');
 $router->get('/test', function(){
         return view('mail.status');
 });
+
+$router->get('/scraping', 'ScraperController@index');
