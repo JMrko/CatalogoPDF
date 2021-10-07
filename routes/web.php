@@ -51,3 +51,5 @@ $router->get('/scrapingTork', 'ScraperController@tork');
 $router->get('/scrapingDipisa', 'ScraperController@dipisa');
 $router->get('/scrapingAvalco', 'ScraperController@avalco');
 $router->get('/scrapingDilen', 'ScraperController@dilen');
+$router->get('/scrapingSodimac', 'ScraperController@sodimac');
+$router->get('/scrapingCuponatic', 'ScraperController@cuponatic');

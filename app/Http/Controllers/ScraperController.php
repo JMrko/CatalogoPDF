@@ -150,10 +150,10 @@ class ScraperController extends Controller
 
             $paginaURL = "https://dilenchile.cl/categoria-producto/papel-higienico/";
             $crawler = $client->request('GET', $paginaURL);
-            $tituloCategoria = $crawler->filter(".title")->first();
+            $tituloCategoria = $crawler->filter(".title");
             echo $tituloCategoria->text() . '<br>';
 
-            $crawler->filter("[class='products columns-4 grid col-4']")->each(function($node){
+            $crawler->filter("[class='products_wrapper isotope_wrapper']")->each(function($node){
                 $imagenProducto = $node->filter("[class='scale-with-grid wp-post-image']")->attr('src');
                 $nombreProducto = $node->filter(".desc > h4");
                 $urlProducto = $node->filter(".image_wrapper > a")->attr('href');
@@ -171,4 +171,73 @@ class ScraperController extends Controller
      
     }
 
+    public function sodimac(Client $client){
+
+        echo "FECHA : " . date("d/m/Y") . "<br>";
+        
+        $paginaURLPages = "https://www.sodimac.cl/sodimac-cl/category/cat4850182/papeles-y-dispensadores/";
+        $crawler = $client->request('GET', $paginaURLPages);
+        $numeroPaginas = $crawler->filter("[class='jsx-4278284191 page-item page-index ']")->last()->text();
+
+        for($i=1; $i<=$numeroPaginas; ++$i)
+        {
+            $paginaURL = "https://www.sodimac.cl/sodimac-cl/category/cat4850182/papeles-y-dispensadores?currentpage=$i";
+            $crawler = $client->request('GET', $paginaURL);
+            $tituloCategoria = $crawler->filter("[class='jsx-245626150 category-title']");
+            echo $tituloCategoria->text() . '<br>';
+            echo '<br>';
+
+            $crawler->filter("[class='jsx-411745769 product ie11-product-container']")->each(function($node){
+                $imagenProducto = $node->filter("[class='image-contain ie11-image-contain  __lazy']")->attr('data-src');
+                $nombreProducto = $node->filter("[class='jsx-411745769 product-title']");
+                $marcaProducto = $node->filter("[class='jsx-411745769 product-brand']");
+                $urlProducto = $node->filter("[class='jsx-4282314783 link link-primary ']")->attr('href');
+                $precioProducto = $node->filter("[class='jsx-4135487716']");
+                echo 'Marca Producto: '. $marcaProducto->text() . '<br>';
+                echo 'Nombre Producto: '. $nombreProducto->text() . '<br>';
+                echo 'Precio Producto: ' . $precioProducto->text() . '<br>';
+                echo 'URL Producto: ';
+                var_dump($urlProducto);
+                echo  '<br>';
+                echo 'Imagen: ';
+                var_dump($imagenProducto);
+                echo '<br>';
+                echo '<br>';
+            });
+        }
+    }
+
+    public function cuponatic(Client $client){
+        echo "FECHA : " . date("d/m/Y") . "<br>";
+
+        $paginaURLPages = "https://www.dpronto.cl/index.php?route=product/category&path=83_71";
+        $crawler = $client->request('GET', $paginaURLPages);
+        $numeroPaginas = $crawler->filter("[class='col-sm-6 text-right']")->text();
+        $pagina = explode('(',$numeroPaginas);
+        var_dump($pagina) . '<br>';
+        // for($i=1; $i<=$numeroPaginas; ++$i)
+        // {
+            $paginaURL = "https://www.dpronto.cl/index.php?route=product/category&path=83_71&page=1";
+            $crawler = $client->request('GET', $paginaURL);
+            $tituloCategoria = $crawler->filter("#content > h1");
+            echo $tituloCategoria->text() . '<br>';
+            echo '<br>';
+
+            $crawler->filter("[class='product-thumb']")->each(function($node){
+                $imagenProducto = $node->filter(".img-responsive")->attr('src');
+                $nombreProducto = $node->filter(".caption > h4");
+                $urlProducto = $node->filter(".image > a")->attr('href');
+                $precioProducto = $node->filter(".price");
+                echo 'Nombre Producto: '. $nombreProducto->text() . '<br>';
+                echo 'Precio Producto: ' . $precioProducto->text() . '<br>';
+                echo 'URL Producto: ';
+                var_dump($urlProducto);
+                echo  '<br>';
+                echo 'Imagen: ';
+                var_dump($imagenProducto);
+                echo '<br>';
+                echo '<br>';
+            });
+        // }
+    }
 }
