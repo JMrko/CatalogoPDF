@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
- $app->withFacades();
+$app->withFacades();
 
 $app->withEloquent();
 
@@ -100,7 +100,7 @@ $app->configure('mail');
 $app->register(\Barryvdh\DomPDF\ServiceProvider::class);
 $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
-
+$app->register(Ixudra\Curl\CurlServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
