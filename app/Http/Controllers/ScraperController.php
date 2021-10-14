@@ -23,8 +23,8 @@ class ScraperController extends Controller
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("[class='h1 page-title']")->first();
             echo 'PÁGINA '.$i. '<br>';
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
+
             $crawler->filter(".js-product-miniature-wrapper")->each(function($node){
                 $imagenProducto = $node->filter(".product-thumbnail > img")->attr('data-src');
                 $nombreProducto = $node->filter("[class='h3 product-title']");
@@ -38,8 +38,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -64,8 +63,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
 
             $crawler->filter("[class='grid__item  small--one-half medium--one-half large--one-third on-sale tagged product-grid-item']")->each(function($node){
@@ -81,8 +79,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
             
             $crawler->filter("[class='grid__item  small--one-half medium--one-half large--one-third tagged product-grid-item']")->each(function($node){
@@ -98,8 +95,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
     }
 
@@ -110,7 +106,7 @@ class ScraperController extends Controller
             $paginaURL = "https://dipisa.cl/tipo_tissues/papel-higienico/";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("[class='col-md-12 text-center']")->first();
-            echo $tituloCategoria->text() . '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
 
             $crawler->filter("[class='col-md-4 mb50']")->each(function($node){
                 $imagenProducto = $node->filter(".box-contenido > img")->attr('src');
@@ -119,8 +115,7 @@ class ScraperController extends Controller
                 echo 'Nombre Producto: '. $nombreProducto->text() . '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
      
     }
@@ -140,8 +135,7 @@ class ScraperController extends Controller
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("[class='page-heading js-category-page']")->first();
             echo 'PÁGINA '.$i. '<br>';
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
             
             $crawler->filter("[class='product-miniature product-style js-product-miniature']")->each(function($node){
                 $imagenProducto = $node->filter(".product-cover-link > img")->attr('src');
@@ -155,8 +149,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -168,7 +161,7 @@ class ScraperController extends Controller
             $paginaURL = "https://dilenchile.cl/categoria-producto/papel-higienico/";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter(".title");
-            echo $tituloCategoria->text() . '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
 
             $crawler->filter(".isotope-item")->each(function($node){
                 $imagenProducto = $node->filter("[class='scale-with-grid wp-post-image']")->attr('src');
@@ -182,8 +175,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
      
     }
@@ -201,8 +193,7 @@ class ScraperController extends Controller
             $paginaURL = "https://www.sodimac.cl/sodimac-cl/category/cat4850182/papeles-y-dispensadores?currentpage=$i";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("[class='jsx-245626150 category-title']");
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
 
             $crawler->filter("[class='jsx-411745769 product ie11-product-container']")->each(function($node){
                 $imagenProducto = $node->filter("[class='image-contain ie11-image-contain  __lazy']")->attr('data-src');
@@ -218,8 +209,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -229,16 +219,16 @@ class ScraperController extends Controller
 
         $paginaURLPages = "https://www.dpronto.cl/index.php?route=product/category&path=83_71";
         $crawler = $client->request('GET', $paginaURLPages);
-        $numeroPaginas = $crawler->filter("[class='col-sm-6 text-right']")->text();
-        $pagina = explode('(',$numeroPaginas);
-        var_dump($pagina) . '<br>';
-        // for($i=1; $i<=$numeroPaginas; ++$i)
-        // {
-            $paginaURL = "https://www.dpronto.cl/index.php?route=product/category&path=83_71&page=1";
+        $posicion = $crawler->filter(".pagination > li")->count()-3;
+        $numeroPaginas = $crawler->filter(".pagination > li")->eq($posicion)->text();
+
+        for($i=1; $i<=$numeroPaginas; ++$i)
+        {
+            $paginaURL = "https://www.dpronto.cl/index.php?route=product/category&path=83_71&page=$i";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("#content > h1");
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo 'PÁGINA '.$i. '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
 
             $crawler->filter("[class='product-thumb']")->each(function($node){
                 $imagenProducto = $node->filter(".img-responsive")->attr('src');
@@ -252,10 +242,9 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
-        // }
+        }
     }
 
     public function comcer(Client $client){
@@ -265,8 +254,7 @@ class ScraperController extends Controller
             $paginaURL = "https://www.comcer.cl/store/categoria-producto/dispensadores/";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter("[class='woocommerce-products-header__title page-title']");
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
 
             $crawler->filter(".products > li")->each(function($node){
                 $imagenProducto = $node->filter("[class='attachment-woocommerce_thumbnail size-woocommerce_thumbnail']")->attr('src');
@@ -280,8 +268,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
     }
     
@@ -299,8 +286,7 @@ class ScraperController extends Controller
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter(".page-title");
             echo 'PÁGINA '.$i. '<br>';
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
             
             $crawler->filter("[class='product-block']")->each(function($node){
                 $imagenProducto = $node->filter("[class='img-fluid']")->attr('src');
@@ -314,8 +300,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -333,8 +318,7 @@ class ScraperController extends Controller
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter(".h2");
             echo 'PÁGINA '.$i. '<br>';
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
             
             $crawler->filter("[class='thumbnail-container']")->each(function($node){
                 $imagenProducto = $node->filter("[class='ttproduct-img1']")->attr('src');
@@ -348,8 +332,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -367,8 +350,7 @@ class ScraperController extends Controller
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter(".nomCategoria");
             echo 'PÁGINA '.$i. '<br>';
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
             
             $crawler->filter("[class='grilla']")->each(function($node){
                 $imagenProducto = $node->filter(".imgGrilla > img")->attr('src');
@@ -382,8 +364,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
         }
     }
@@ -395,8 +376,7 @@ class ScraperController extends Controller
             $paginaURL = "https://limpiamas.mercadoshops.cl/hogar/";
             $crawler = $client->request('GET', $paginaURL);
             $tituloCategoria = $crawler->filter(".ui-search-breadcrumb__title");
-            echo $tituloCategoria->text() . '<br>';
-            echo '<br>';
+            echo $tituloCategoria->text() . '<br><br>';
             
             $crawler->filter("[class='ui-search-result__wrapper']")->each(function($node){
                 $imagenProducto = $node->filter(".slick-slide > img")->attr('src');
@@ -410,8 +390,7 @@ class ScraperController extends Controller
                 echo  '<br>';
                 echo 'Imagen: ';
                 var_dump($imagenProducto);
-                echo '<br>';
-                echo '<br>';
+                echo '<br><br>';
             });
     }
 
@@ -437,30 +416,99 @@ class ScraperController extends Controller
             echo  '<br>';
             echo 'Imagen: ';
             var_dump($imagenProducto);
-            echo '<br>';
-            echo '<br>';
+            echo '<br><br>';
         });
     }
 
     public function mercado(){
-        $url = 'https://deadpool.instaleap.io/api/v2';
-        $data = array('operationName'=>'getStore','variables'=>['clientId'=>'CENTRAL_MAYORISTA'],'query'=>'query getStore($storeId: ID, $clientId: String) {  getStore(storeId: $storeId, clientId: $clientId) {    id    name    categories {      id      image      slug      name      redirectTo      isAvailableInHome      __typename    }    banners {      id      title      desktopImage      mobileImage      targetCategory      targetUrl {        url        type        __typename      }      __typename    }    __typename  }}');
-        $dataJson = json_encode($data);
-        $response = \Httpful\Request::post($url)
-                            ->sendsJson()
-                            ->body($dataJson)
-                            ->send();
-       $storeId = $response->body->data->getStore->id;
-       $categoryId = $response->body->data->getStore->categories;
-        dd( $categoryId);
+        echo "FECHA : " . date("d/m/Y") . "<br>";
 
-       $dataProductos = array('variables'=> ['categoryId'=> '63548','onlyThisCategory'=>false,'pagination'=>['pageSize'=>30,'currentPage'=>1],'storeId'=>$storeId],'query'=>'query ($pagination: paginationInput, $search: SearchInput, $storeId: ID!, $categoryId: ID, $onlyThisCategory: Boolean, $filter: ProductsFilterInput, $orderBy: productsSortInput) {  getProducts(pagination: $pagination, search: $search, storeId: $storeId, categoryId: $categoryId, onlyThisCategory: $onlyThisCategory, filter: $filter, orderBy: $orderBy) {    redirectTo    products {      id      description      name      photosUrls      sku      unit      price      specialPrice      promotion {        description        type        isActive        conditions        __typename      }      stock      nutritionalDetails      clickMultiplier      subQty      subUnit      maxQty      minQty      specialMaxQty      ean      boost      showSubUnit      isActive      slug      categories {        id        name        __typename      }      __typename    }    paginator {      pages      page      __typename    }    __typename  }}');
-       $dataProductosJson = json_encode($dataProductos);
-       $productos = \Httpful\Request::post($url)
+        $url = 'https://deadpool.instaleap.io/api/v2';
+        $queryCategorias = array('operationName'=>'getStore','variables'=>['clientId'=>'CENTRAL_MAYORISTA'],'query'=>'query getStore($storeId: ID, $clientId: String) {  getStore(storeId: $storeId, clientId: $clientId) {    id    name    categories {      id      image      slug      name      redirectTo      isAvailableInHome      __typename    }    banners {      id      title      desktopImage      mobileImage      targetCategory      targetUrl {        url        type        __typename      }      __typename    }    __typename  }}');
+        $queryCategoriasJson = json_encode($queryCategorias);
+        $datosCategorias = \Httpful\Request::post($url)
                             ->sendsJson()
-                            ->body($dataProductosJson)
+                            ->body($queryCategoriasJson)
                             ->send();
-        dd($productos);
+       $store = $datosCategorias->body->data->getStore->id;
+       $categorias = $datosCategorias->body->data->getStore->categories;    
+
+        foreach ($categorias as $categoria) {
+            $id = $categoria->id;
+            echo 'Categoria: '. $categoria->name . '<br><br>';
+
+            $queryProductosObtenerPaginas = array('variables'=> ['categoryId'=> $id,'onlyThisCategory'=>false,'pagination'=>['pageSize'=>30,'currentPage'=>1],'storeId'=>$store],'query'=>'query ($pagination: paginationInput, $search: SearchInput, $storeId: ID!, $categoryId: ID, $onlyThisCategory: Boolean, $filter: ProductsFilterInput, $orderBy: productsSortInput) {  getProducts(pagination: $pagination, search: $search, storeId: $storeId, categoryId: $categoryId, onlyThisCategory: $onlyThisCategory, filter: $filter, orderBy: $orderBy) {    redirectTo    products {      id      description      name      photosUrls      sku      unit      price      specialPrice      promotion {        description        type        isActive        conditions        __typename      }      stock      nutritionalDetails      clickMultiplier      subQty      subUnit      maxQty      minQty      specialMaxQty      ean      boost      showSubUnit      isActive      slug      categories {        id        name        __typename      }      __typename    }    paginator {      pages      page      __typename    }    __typename  }}');
+            $queryProductosObtenerPaginasJson = json_encode($queryProductosObtenerPaginas);
+            $datosProductos1 = \Httpful\Request::post($url)
+                                    ->sendsJson()
+                                    ->body($queryProductosObtenerPaginasJson)
+                                    ->send();
+            $paginas =$datosProductos1->body->data->getProducts->paginator->pages;
+
+            for($i=1; $i<=$paginas;$i++)
+            {
+                $queryProductos = array('variables'=> ['categoryId'=> $id,'onlyThisCategory'=>false,'pagination'=>['pageSize'=>30,'currentPage'=>$i],'storeId'=>$store],'query'=>'query ($pagination: paginationInput, $search: SearchInput, $storeId: ID!, $categoryId: ID, $onlyThisCategory: Boolean, $filter: ProductsFilterInput, $orderBy: productsSortInput) {  getProducts(pagination: $pagination, search: $search, storeId: $storeId, categoryId: $categoryId, onlyThisCategory: $onlyThisCategory, filter: $filter, orderBy: $orderBy) {    redirectTo    products {      id      description      name      photosUrls      sku      unit      price      specialPrice      promotion {        description        type        isActive        conditions        __typename      }      stock      nutritionalDetails      clickMultiplier      subQty      subUnit      maxQty      minQty      specialMaxQty      ean      boost      showSubUnit      isActive      slug      categories {        id        name        __typename      }      __typename    }    paginator {      pages      page      __typename    }    __typename  }}');
+                $queryProductosJson = json_encode($queryProductos);
+                $datosProductos = \Httpful\Request::post($url)
+                                        ->sendsJson()
+                                        ->body($queryProductosJson)
+                                        ->send();
+                $productos =$datosProductos->body->data->getProducts->products;
+                $paginas =$datosProductos1->body->data->getProducts->paginator->pages;
+                echo 'Páginas Totales: '. $paginas . '<br>'; 
+                echo 'Página Actual: '. $i . '<br><br>'; 
+                foreach ($productos as $producto) {
+                        echo 'Nombre Producto: '. $producto->name . '<br>';
+                        echo 'Precio Producto: ' . $producto->price . '<br>';
+                        echo 'Imagen: ' . $producto->photosUrls[0] . '<br>';
+                        echo '<br>';
+            }
+            }
+            
+        }
     }
 
+    public function cuponatic(){
+        
+        echo "FECHA : " . date("d/m/Y") . "<br><br>";
+        $categorias = array('panoramas','productos','viajes-y-turismo','belleza','servicios','gastronomia','bienestar-y-salud');
+        foreach ($categorias as $categoria) {
+            $urlCategoria = "https://cl-api.cuponatic-latam.com/api2/cdn/menu/seccion/$categoria?ciudad=Santiago";
+            $datosCategoria = \Httpful\Request::get($urlCategoria)
+                                    ->sendsJson()
+                                    ->send();
+            $subcategorias = $datosCategoria->body->hijos;
+            echo 'CATEGORIA: '. $categoria . '<br><br>';
+            foreach ($subcategorias as $subcategoria) {
+                $slug = $subcategoria->slug;
+                echo 'SUBCATEGORIA: '. $subcategoria->slug . '<br><br>';
+                $encontroPagina = true;
+                $numeroPaginas = 1;
+                while($encontroPagina == true)
+                {
+                    $urlSubcategoria = "https://cl-api.cuponatic-latam.com/api2/cdn/descuentos/menu/$slug?ciudad=Santiago&v=14&page=$numeroPaginas";
+                    $datosSubcategoria = \Httpful\Request::get($urlSubcategoria)
+                                            ->sendsJson()
+                                            ->send();
+
+                    $productosSubcategorias = $datosSubcategoria->body;
+                    if(sizeof($productosSubcategorias)>0){
+                        echo 'PÁGINA: '. $numeroPaginas . '<br><br>';
+                        foreach ($productosSubcategorias as $productosSubcategoria) {
+                            echo 'Nombre Producto: '. $productosSubcategoria->titulo . '<br>';
+                            echo 'Imagen: ' . $productosSubcategoria->imagen . '<br>';
+                            echo 'Precio Original Producto: ' . $productosSubcategoria->valor_original . '<br>';
+                            echo 'Precio Oferta Producto: ' . $productosSubcategoria->valor_oferta . '<br>';
+                            echo 'URL Producto: ' . $productosSubcategoria->url_desktop . '<br><br>';
+                        }
+                        $numeroPaginas = $numeroPaginas + 1;
+                    }else {
+                        $encontroPagina = false;
+                        break;
+                    }
+                   
+                }                
+            }
+        }
+    }
 }

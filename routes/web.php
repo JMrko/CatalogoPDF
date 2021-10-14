@@ -60,3 +60,4 @@ $router->get('/scrapingProvit', 'ScraperController@provit');
 $router->get('/scrapingLimpiamas', 'ScraperController@limpiamas');
 $router->get('/scrapingHygiene', 'ScraperController@hygiene');
 $router->get('/scrapingMercado', 'ScraperController@mercado');
+$router->get('/scrapingCuponatic', 'ScraperController@cuponatic');
